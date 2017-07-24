@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmileBase", "SmileBase.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentService", "..\StudentService\StudentService.csproj", "{BA2818C9-8311-4332-B4D9-41D1A3BF16CB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parsers", "Parsers", "{6EBA2B80-4352-4BB9-842A-50E67EF32226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericParsing", "..\GenericParser\GenericParsing.csproj", "{ADD325F8-CBD9-43FE-850D-E2F34D736C9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{BA2818C9-8311-4332-B4D9-41D1A3BF16CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA2818C9-8311-4332-B4D9-41D1A3BF16CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA2818C9-8311-4332-B4D9-41D1A3BF16CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD325F8-CBD9-43FE-850D-E2F34D736C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD325F8-CBD9-43FE-850D-E2F34D736C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD325F8-CBD9-43FE-850D-E2F34D736C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD325F8-CBD9-43FE-850D-E2F34D736C9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ADD325F8-CBD9-43FE-850D-E2F34D736C9D} = {6EBA2B80-4352-4BB9-842A-50E67EF32226}
 	EndGlobalSection
 EndGlobal

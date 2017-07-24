@@ -36,33 +36,41 @@
             this.ImportAccountingButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ImportExcelTabPage = new System.Windows.Forms.TabPage();
-            this.AccountingTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.appointmentsGridView = new System.Windows.Forms.DataGridView();
-            this.balanceGridView = new System.Windows.Forms.DataGridView();
             this.appointmentsOverviewLabel = new System.Windows.Forms.Label();
+            this.appointmentsGridView = new System.Windows.Forms.DataGridView();
             this.balanceLabel = new System.Windows.Forms.Label();
+            this.balanceGridView = new System.Windows.Forms.DataGridView();
+            this.AccountingTabPage = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.debitsGridView = new System.Windows.Forms.DataGridView();
-            this.paymentsGridView = new System.Windows.Forms.DataGridView();
             this.DebitsLabel = new System.Windows.Forms.Label();
+            this.debitsGridView = new System.Windows.Forms.DataGridView();
             this.paymentsLabel = new System.Windows.Forms.Label();
+            this.paymentsGridView = new System.Windows.Forms.DataGridView();
+            this.InformationsTabPage = new System.Windows.Forms.TabPage();
+            this.informationsTextBox = new System.Windows.Forms.TextBox();
             this.ImportAllAccountingsButton = new System.Windows.Forms.Button();
+            this.importGeorgeAccountEntriesButton = new System.Windows.Forms.Button();
+            this.georgeOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.georgeFilePathTextBox = new System.Windows.Forms.TextBox();
+            this.FindGeorgeFileButton = new System.Windows.Forms.Button();
+            this.OpenMainFormButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.ImportExcelTabPage.SuspendLayout();
-            this.AccountingTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.balanceGridView)).BeginInit();
+            this.AccountingTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.debitsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentsGridView)).BeginInit();
+            this.InformationsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // StudenImportCommand
@@ -77,7 +85,7 @@
             // 
             // readStudentSheetButton
             // 
-            this.readStudentSheetButton.Location = new System.Drawing.Point(491, 80);
+            this.readStudentSheetButton.Location = new System.Drawing.Point(354, 80);
             this.readStudentSheetButton.Name = "readStudentSheetButton";
             this.readStudentSheetButton.Size = new System.Drawing.Size(131, 23);
             this.readStudentSheetButton.TabIndex = 1;
@@ -90,7 +98,7 @@
             this.studentsComboBox.FormattingEnabled = true;
             this.studentsComboBox.Location = new System.Drawing.Point(27, 82);
             this.studentsComboBox.Name = "studentsComboBox";
-            this.studentsComboBox.Size = new System.Drawing.Size(458, 21);
+            this.studentsComboBox.Size = new System.Drawing.Size(324, 21);
             this.studentsComboBox.TabIndex = 3;
             this.studentsComboBox.SelectedIndexChanged += new System.EventHandler(this.studentsComboBox_SelectedIndexChanged);
             // 
@@ -129,6 +137,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.ImportExcelTabPage);
             this.tabControl1.Controls.Add(this.AccountingTabPage);
+            this.tabControl1.Controls.Add(this.InformationsTabPage);
             this.tabControl1.Location = new System.Drawing.Point(27, 234);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -145,17 +154,6 @@
             this.ImportExcelTabPage.TabIndex = 0;
             this.ImportExcelTabPage.Text = "Excel Import";
             this.ImportExcelTabPage.UseVisualStyleBackColor = true;
-            // 
-            // AccountingTabPage
-            // 
-            this.AccountingTabPage.Controls.Add(this.splitContainer2);
-            this.AccountingTabPage.Location = new System.Drawing.Point(4, 22);
-            this.AccountingTabPage.Name = "AccountingTabPage";
-            this.AccountingTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.AccountingTabPage.Size = new System.Drawing.Size(966, 599);
-            this.AccountingTabPage.TabIndex = 1;
-            this.AccountingTabPage.Text = "Accounting";
-            this.AccountingTabPage.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
@@ -177,6 +175,15 @@
             this.splitContainer1.SplitterDistance = 296;
             this.splitContainer1.TabIndex = 5;
             // 
+            // appointmentsOverviewLabel
+            // 
+            this.appointmentsOverviewLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.appointmentsOverviewLabel.Location = new System.Drawing.Point(0, 0);
+            this.appointmentsOverviewLabel.Name = "appointmentsOverviewLabel";
+            this.appointmentsOverviewLabel.Size = new System.Drawing.Size(960, 13);
+            this.appointmentsOverviewLabel.TabIndex = 6;
+            this.appointmentsOverviewLabel.Text = "Appointments Overview";
+            // 
             // appointmentsGridView
             // 
             this.appointmentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -185,6 +192,15 @@
             this.appointmentsGridView.Name = "appointmentsGridView";
             this.appointmentsGridView.Size = new System.Drawing.Size(960, 277);
             this.appointmentsGridView.TabIndex = 3;
+            // 
+            // balanceLabel
+            // 
+            this.balanceLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.balanceLabel.Location = new System.Drawing.Point(0, 0);
+            this.balanceLabel.Name = "balanceLabel";
+            this.balanceLabel.Size = new System.Drawing.Size(960, 17);
+            this.balanceLabel.TabIndex = 7;
+            this.balanceLabel.Text = "Balances";
             // 
             // balanceGridView
             // 
@@ -195,23 +211,16 @@
             this.balanceGridView.Size = new System.Drawing.Size(960, 273);
             this.balanceGridView.TabIndex = 4;
             // 
-            // appointmentsOverviewLabel
+            // AccountingTabPage
             // 
-            this.appointmentsOverviewLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.appointmentsOverviewLabel.Location = new System.Drawing.Point(0, 0);
-            this.appointmentsOverviewLabel.Name = "appointmentsOverviewLabel";
-            this.appointmentsOverviewLabel.Size = new System.Drawing.Size(960, 13);
-            this.appointmentsOverviewLabel.TabIndex = 6;
-            this.appointmentsOverviewLabel.Text = "Appointments Overview";
-            // 
-            // balanceLabel
-            // 
-            this.balanceLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.balanceLabel.Location = new System.Drawing.Point(0, 0);
-            this.balanceLabel.Name = "balanceLabel";
-            this.balanceLabel.Size = new System.Drawing.Size(960, 17);
-            this.balanceLabel.TabIndex = 7;
-            this.balanceLabel.Text = "Balances";
+            this.AccountingTabPage.Controls.Add(this.splitContainer2);
+            this.AccountingTabPage.Location = new System.Drawing.Point(4, 22);
+            this.AccountingTabPage.Name = "AccountingTabPage";
+            this.AccountingTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.AccountingTabPage.Size = new System.Drawing.Size(966, 599);
+            this.AccountingTabPage.TabIndex = 1;
+            this.AccountingTabPage.Text = "Accounting";
+            this.AccountingTabPage.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
@@ -233,6 +242,15 @@
             this.splitContainer2.SplitterDistance = 305;
             this.splitContainer2.TabIndex = 5;
             // 
+            // DebitsLabel
+            // 
+            this.DebitsLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DebitsLabel.Location = new System.Drawing.Point(0, 0);
+            this.DebitsLabel.Name = "DebitsLabel";
+            this.DebitsLabel.Size = new System.Drawing.Size(960, 13);
+            this.DebitsLabel.TabIndex = 7;
+            this.DebitsLabel.Text = "Debits";
+            // 
             // debitsGridView
             // 
             this.debitsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -241,6 +259,15 @@
             this.debitsGridView.Name = "debitsGridView";
             this.debitsGridView.Size = new System.Drawing.Size(960, 286);
             this.debitsGridView.TabIndex = 5;
+            // 
+            // paymentsLabel
+            // 
+            this.paymentsLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.paymentsLabel.Location = new System.Drawing.Point(0, 0);
+            this.paymentsLabel.Name = "paymentsLabel";
+            this.paymentsLabel.Size = new System.Drawing.Size(960, 13);
+            this.paymentsLabel.TabIndex = 8;
+            this.paymentsLabel.Text = "Payments";
             // 
             // paymentsGridView
             // 
@@ -251,23 +278,25 @@
             this.paymentsGridView.Size = new System.Drawing.Size(960, 265);
             this.paymentsGridView.TabIndex = 6;
             // 
-            // DebitsLabel
+            // InformationsTabPage
             // 
-            this.DebitsLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DebitsLabel.Location = new System.Drawing.Point(0, 0);
-            this.DebitsLabel.Name = "DebitsLabel";
-            this.DebitsLabel.Size = new System.Drawing.Size(960, 13);
-            this.DebitsLabel.TabIndex = 7;
-            this.DebitsLabel.Text = "Debits";
+            this.InformationsTabPage.Controls.Add(this.informationsTextBox);
+            this.InformationsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.InformationsTabPage.Name = "InformationsTabPage";
+            this.InformationsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.InformationsTabPage.Size = new System.Drawing.Size(966, 599);
+            this.InformationsTabPage.TabIndex = 2;
+            this.InformationsTabPage.Text = "Informations";
+            this.InformationsTabPage.UseVisualStyleBackColor = true;
             // 
-            // paymentsLabel
+            // informationsTextBox
             // 
-            this.paymentsLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.paymentsLabel.Location = new System.Drawing.Point(0, 0);
-            this.paymentsLabel.Name = "paymentsLabel";
-            this.paymentsLabel.Size = new System.Drawing.Size(960, 13);
-            this.paymentsLabel.TabIndex = 8;
-            this.paymentsLabel.Text = "Payments";
+            this.informationsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.informationsTextBox.Location = new System.Drawing.Point(3, 3);
+            this.informationsTextBox.Multiline = true;
+            this.informationsTextBox.Name = "informationsTextBox";
+            this.informationsTextBox.Size = new System.Drawing.Size(960, 593);
+            this.informationsTextBox.TabIndex = 0;
             // 
             // ImportAllAccountingsButton
             // 
@@ -280,11 +309,63 @@
             this.ImportAllAccountingsButton.UseVisualStyleBackColor = true;
             this.ImportAllAccountingsButton.Click += new System.EventHandler(this.ImportAllAccountingsButton_Click);
             // 
+            // importGeorgeAccountEntriesButton
+            // 
+            this.importGeorgeAccountEntriesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.importGeorgeAccountEntriesButton.Location = new System.Drawing.Point(828, 31);
+            this.importGeorgeAccountEntriesButton.Name = "importGeorgeAccountEntriesButton";
+            this.importGeorgeAccountEntriesButton.Size = new System.Drawing.Size(173, 23);
+            this.importGeorgeAccountEntriesButton.TabIndex = 12;
+            this.importGeorgeAccountEntriesButton.Text = "Import George Account";
+            this.importGeorgeAccountEntriesButton.UseVisualStyleBackColor = true;
+            this.importGeorgeAccountEntriesButton.Click += new System.EventHandler(this.importGeorgeAccountEntriesButton_Click);
+            // 
+            // georgeOpenFileDialog
+            // 
+            this.georgeOpenFileDialog.FileName = "openFileDialog1";
+            this.georgeOpenFileDialog.Filter = "CSV Datei | *.csv";
+            this.georgeOpenFileDialog.InitialDirectory = "\\\\disk\\docs\\Smile\\smileDb";
+            // 
+            // georgeFilePathTextBox
+            // 
+            this.georgeFilePathTextBox.Location = new System.Drawing.Point(552, 57);
+            this.georgeFilePathTextBox.Name = "georgeFilePathTextBox";
+            this.georgeFilePathTextBox.Size = new System.Drawing.Size(416, 20);
+            this.georgeFilePathTextBox.TabIndex = 13;
+            this.georgeFilePathTextBox.Text = "\\\\disk\\docs\\Smile\\smileDb\\AccountImportGeorge.csv";
+            this.georgeFilePathTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // FindGeorgeFileButton
+            // 
+            this.FindGeorgeFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FindGeorgeFileButton.Location = new System.Drawing.Point(969, 55);
+            this.FindGeorgeFileButton.Name = "FindGeorgeFileButton";
+            this.FindGeorgeFileButton.Size = new System.Drawing.Size(32, 23);
+            this.FindGeorgeFileButton.TabIndex = 14;
+            this.FindGeorgeFileButton.Text = "...";
+            this.FindGeorgeFileButton.UseVisualStyleBackColor = true;
+            this.FindGeorgeFileButton.Click += new System.EventHandler(this.FindGeorgeFileButton_Click);
+            // 
+            // OpenMainFormButton
+            // 
+            this.OpenMainFormButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.OpenMainFormButton.Location = new System.Drawing.Point(27, 2);
+            this.OpenMainFormButton.Name = "OpenMainFormButton";
+            this.OpenMainFormButton.Size = new System.Drawing.Size(131, 23);
+            this.OpenMainFormButton.TabIndex = 15;
+            this.OpenMainFormButton.Text = "Open Main Form";
+            this.OpenMainFormButton.UseVisualStyleBackColor = false;
+            this.OpenMainFormButton.Click += new System.EventHandler(this.OpenMainFormButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 911);
+            this.Controls.Add(this.OpenMainFormButton);
+            this.Controls.Add(this.FindGeorgeFileButton);
+            this.Controls.Add(this.georgeFilePathTextBox);
+            this.Controls.Add(this.importGeorgeAccountEntriesButton);
             this.Controls.Add(this.ImportAllAccountingsButton);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ImportAccountingButton);
@@ -298,19 +379,21 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.ImportExcelTabPage.ResumeLayout(false);
-            this.AccountingTabPage.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.balanceGridView)).EndInit();
+            this.AccountingTabPage.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.debitsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentsGridView)).EndInit();
+            this.InformationsTabPage.ResumeLayout(false);
+            this.InformationsTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,6 +421,13 @@
         private System.Windows.Forms.Label paymentsLabel;
         private System.Windows.Forms.DataGridView paymentsGridView;
         private System.Windows.Forms.Button ImportAllAccountingsButton;
+        private System.Windows.Forms.TabPage InformationsTabPage;
+        private System.Windows.Forms.TextBox informationsTextBox;
+        private System.Windows.Forms.Button importGeorgeAccountEntriesButton;
+        private System.Windows.Forms.OpenFileDialog georgeOpenFileDialog;
+        private System.Windows.Forms.TextBox georgeFilePathTextBox;
+        private System.Windows.Forms.Button FindGeorgeFileButton;
+        private System.Windows.Forms.Button OpenMainFormButton;
     }
 }
 

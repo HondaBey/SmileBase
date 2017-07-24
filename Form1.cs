@@ -14,7 +14,6 @@ namespace SmileBase
 {
     public partial class Form1 : Form
     {
-
         private StudentImport currentStudentInComboBox;
         private DataTable balancesTable;
         private DataTable appointmentOverviewTable;
@@ -49,9 +48,9 @@ namespace SmileBase
             {
                 statusLabel.Text = ex.ToString();
             }
-            
         }
-        void ResetStatusLabel()
+
+        private void ResetStatusLabel()
         {
             statusLabel.ResetText();
         }
@@ -77,7 +76,6 @@ namespace SmileBase
 
             StudentTextBox.Text = currentStudent.FirstOrDefault().ToAddressString();
             importRefId = currentStudentInComboBox.Id;
-
         }
 
         private void ImportAccountingButton_Click(object sender, EventArgs e)
@@ -90,7 +88,6 @@ namespace SmileBase
             paymentsGridView.DataSource = paymentEntries;
 
             tabControl1.SelectedTab = AccountingTabPage;
-
         }
 
         private void ImportAllAccountingsButton_Click(object sender, EventArgs e)
@@ -98,24 +95,73 @@ namespace SmileBase
             var studentReader = new StudentReader();
             var debitWriter = new DebitWriter();
             var paymentWriter = new PaymentWriter();
+            var sb = new StringBuilder();
 
             var allStudents = studentReader.GetActiveStudentsForComboBox();
-            foreach (var customer in allStudents)
+            try
             {
-                var balanceImporter = new BalanceImporter(balancesTable);
-                var debitEntries = balanceImporter.ReadDebits(currentStudentInComboBox.CustomerNo, importFileName, importRefId);
-                foreach(var debit in debitEntries)
+                foreach (var customer in allStudents)
                 {
-                    debitWriter.AddDebit(debit);
-                }
+                    var accountLoader = new AccountLoader();
+                    var excelFilePath = accountLoader.GetExcelSheetFullPath(customer.CustomerNo);
+                    if (excelFilePath.Contains("not found"))
+                    {
+                        sb.AppendLine(excelFilePath);
+                        continue;
+                    }
+                    var dataSet = accountLoader.ExcelToDataSet(excelFilePath);
+                    balancesTable = dataSet.Tables["Saldenliste"];
+                    var balanceImporter = new BalanceImporter(balancesTable);
+                    var debitEntries = balanceImporter.ReadDebits(customer.CustomerNo, excelFilePath, customer.Id);
+                    foreach (var debit in debitEntries)
+                    {
+                        debitWriter.AddDebit(debit);
+                    }
 
-                var paymentEntries = balanceImporter.ReadPayments(currentStudentInComboBox.CustomerNo, importFileName, importRefId);
-                foreach (var payment in paymentEntries)
-                {
-                    paymentWriter.AddPayment(payment);
+                    var paymentEntries = balanceImporter.ReadPayments(customer.CustomerNo, excelFilePath, customer.Id);
+                    foreach (var payment in paymentEntries)
+                    {
+                        paymentWriter.AddPayment(payment);
+                    }
                 }
-
             }
+            finally
+            {
+                Console.WriteLine(sb.ToString());
+                informationsTextBox.Text = sb.ToString();
+            }
+        }
+
+        private void importGeorgeAccountEntriesButton_Click(object sender, EventArgs e)
+        {
+            var georgeFilePath = georgeFilePathTextBox.Text;
+            var accountLoader = new AccountLoader();
+            var bankAccountList = accountLoader.CsvToGeorgeAccountList(georgeFilePath, ',');
+            var bankAccountWriter = new BankAccountWriter();
+            foreach (var entry in bankAccountList)
+            {
+                try
+                {
+                    bankAccountWriter.AddGeorgeAccountEntry(entry);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    //throw;
+                }
+            }
+        }
+
+        private void FindGeorgeFileButton_Click(object sender, EventArgs e)
+        {
+            if (georgeOpenFileDialog.ShowDialog() == DialogResult.OK)
+                georgeFilePathTextBox.Text = georgeOpenFileDialog.FileName;
+        }
+
+        private void OpenMainFormButton_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
         }
     }
 }
